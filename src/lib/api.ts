@@ -94,6 +94,35 @@ export interface JourneyHandoffResult {
   error?: string;
 }
 
+export interface PaymentOrderRequest {
+  name: string;
+  phone: string;
+  location: LocationId;
+  journey_id: string;
+  idempotency_key: string;
+  attribution: Record<string, unknown>;
+}
+
+export interface PaymentOrderResponse {
+  accepted: boolean;
+  payment_id: string;
+  order_id: string;
+  amount: number;
+  currency: string;
+  key_id: string;
+}
+
+export interface PaymentStatusResponse {
+  accepted: boolean;
+  payment: {
+    id: string;
+    amount_minor: number;
+    currency: string;
+    status: "created" | "paid" | "failed" | "cancelled";
+    provider_payment_id: string | null;
+  };
+}
+
 async function postJson<TPayload, TResponse>(path: string, payload: TPayload) {
   const response = await fetch(`${env.apiBaseUrl}${path}`, {
     method: "POST",
@@ -200,6 +229,19 @@ export async function requestJourneyHandoff(
           : "Santaan could not save this request yet.",
     };
   }
+}
+
+export async function createPaymentOrder(payload: PaymentOrderRequest) {
+  return postJson<PaymentOrderRequest, PaymentOrderResponse>("/payment/orders", payload);
+}
+
+export async function getPaymentStatus(paymentId: string) {
+  const response = await fetch(`${env.apiBaseUrl}/payment/orders/${encodeURIComponent(paymentId)}`, {
+    headers: { Accept: "application/json" },
+  });
+  const result = (await response.json().catch(() => ({}))) as PaymentStatusResponse & { error?: string };
+  if (!response.ok) throw new Error(result.error || `Request failed: ${response.status}`);
+  return result;
 }
 
 export function buildWhatsAppLink(message: string) {

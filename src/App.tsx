@@ -5,6 +5,8 @@ import JourneyMap from "./pages/JourneyMap";
 import PatientHeatMap from "./pages/PatientHeatMap";
 import RapidIVFGuide from "./pages/RapidIVFGuide";
 import Guide from "./pages/Guide";
+import Consultation from "./pages/Consultation";
+import Payment from "./pages/Payment";
 
 export function App() {
   return (
@@ -15,6 +17,8 @@ export function App() {
           <Route path="/" element={<RapidIVFGuide />} />
           <Route path="/quick-guide" element={<RapidIVFGuide />} />
           <Route path="/guide/:token" element={<Guide />} />
+          <Route path="/consultation" element={<Consultation />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/map" element={<PatientHeatMap />} />
           <Route path="/library" element={<LibraryMap />} />
           <Route path="/journey" element={<JourneyMap />} />

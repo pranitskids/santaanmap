@@ -1,0 +1,3 @@
+Front end 
+npm run build
+npx wrangler pages deploy dist --project-name santaan-companion

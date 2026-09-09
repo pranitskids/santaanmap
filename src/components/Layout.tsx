@@ -1,17 +1,20 @@
 import { LockKeyhole, ShieldCheck } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { isEmbedMode } from "../lib/attribution";
 
 export function Header() {
+  const location = useLocation();
   if (isEmbedMode()) {
     return null;
   }
+
+  const isOdia = location.pathname === "/or";
 
   return (
     <header className="border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
-          to="/"
+          to={isOdia ? "/or" : "/en"}
           aria-label="Santaan — Science for Smiles"
           className="shrink-0"
         >
@@ -26,7 +29,7 @@ export function Header() {
         </p>
         <span className="hidden items-center gap-2 rounded-full bg-teal-50 px-3 py-2 text-xs font-semibold text-teal-800 sm:flex">
           <LockKeyhole className="h-4 w-4" aria-hidden="true" />
-          No contact unless requested
+          {isOdia ? "ଆପଣ ନକହିଲେ ଯୋଗାଯୋଗ କରାଯିବ ନାହିଁ" : "No contact unless requested"}
         </span>
       </div>
     </header>
@@ -34,9 +37,12 @@ export function Header() {
 }
 
 export function Footer() {
+  const location = useLocation();
   if (isEmbedMode()) {
     return null;
   }
+
+  const isOdia = location.pathname === "/or";
 
   return (
     <footer className="border-t border-slate-200 bg-white px-4 py-6 sm:px-6">
@@ -46,7 +52,9 @@ export function Footer() {
           Santaan Fertility · Odisha
         </span>
         <span>
-          Educational reference only. A clinician must confirm medical decisions.
+          {isOdia
+            ? "କେବଳ ଶିକ୍ଷାମୂଳକ ସୂଚନା। ଚିକିତ୍ସା ନିଷ୍ପତ୍ତି ଡାକ୍ତର ନିଶ୍ଚିତ କରିବେ।"
+            : "Educational reference only. A clinician must confirm medical decisions."}
         </span>
       </div>
     </footer>

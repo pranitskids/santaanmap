@@ -15,6 +15,8 @@ export function App() {
         <Header />
         <Routes>
           <Route path="/" element={<RapidIVFGuide />} />
+          <Route path="/en" element={<RapidIVFGuide />} />
+          <Route path="/or" element={<RapidIVFGuide />} />
           <Route path="/quick-guide" element={<RapidIVFGuide />} />
           <Route path="/guide/:token" element={<Guide />} />
           <Route path="/consultation" element={<Consultation />} />

@@ -27,6 +27,7 @@ const STAGE_KEY = "santaan_quick_guide_stage";
 const LANGUAGE_KEY = "santaan_quick_guide_language";
 
 const shortStageNames: Record<string, string> = {
+  "before-ivf": "First steps",
   "initial-consultation": "Consult & tests",
   "ovarian-stimulation": "Injections",
   "egg-retrieval": "Egg pickup",
@@ -41,6 +42,14 @@ const shortStageNames: Record<string, string> = {
 const excludedQuestions = new Set([
   "Are there any fertility clinics in Bengaluru you recommend?",
   "How much does IVF cost in Bengaluru?",
+  "Can this page open directly to a topic from a QR code or ad?",
+  "What happens when a patient taps Send To WhatsApp?",
+  "Does the site collect CRM-ready lead context before backend integration is finished?",
+  "How is this different from a generic IVF information page?",
+  "Can an existing patient use the same experience?",
+  "What should Santaan ask for before booking a consultation?",
+  "Which signals are worth passing into CRM from the frontend?",
+  "Can Santaan use this for clinic QR codes as well as ads?",
 ]);
 
 const englishIvfSteps: RapidGuideStage[] = ivfSteps;

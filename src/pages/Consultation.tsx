@@ -101,6 +101,7 @@ export default function Consultation() {
         <div className="mb-6">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Santaan Fertility</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Book a consultation</h1>
+          <p className="mt-2 leading-6 text-slate-600">Your first visit checks both of you together: a semen test, an AMH blood test, a pelvic scan, a senior doctor consultation, and a review of your old reports. It&apos;s an assessment, not treatment.</p>
           <p className="mt-2 leading-6 text-slate-600">Choose a practical location and preferred date. The care team will confirm availability with you.</p>
         </div>
 
